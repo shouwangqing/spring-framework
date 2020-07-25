@@ -32,6 +32,8 @@ import java.security.NoSuchAlgorithmException;
  * @author Juergen Hoeller
  * @author Craig Andrews
  * @since 3.0
+ * 
+ * Ê¹ÓÃApacheµÄCommons Codec
  */
 public abstract class DigestUtils {
 

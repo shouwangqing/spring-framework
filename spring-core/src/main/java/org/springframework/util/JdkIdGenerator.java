@@ -21,6 +21,8 @@ import java.util.UUID;
 /**
  * An {@link IdGenerator} that calls {@link java.util.UUID#randomUUID()}.
  *
+ * 一个IdGenerator，它是调用了java.util.UUID.randomUUID()
+ *
  * @author Rossen Stoyanchev
  * @since 4.1.5
  */

@@ -28,7 +28,7 @@ import org.springframework.lang.Nullable;
  * Miscellaneous object utility methods.
  *
  * <p>Mainly for internal use within the framework.
- *
+ *   主要用于框架的内部使用
  * <p>Thanks to Alex Ruiz for contributing several enhancements to this class!
  *
  * @author Juergen Hoeller

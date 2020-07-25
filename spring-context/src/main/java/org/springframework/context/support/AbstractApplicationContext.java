@@ -169,11 +169,11 @@ public abstract class AbstractApplicationContext extends DefaultResourceLoader
 
 	/** Parent context. */
 	@Nullable
-	private ApplicationContext parent;
+	private ApplicationContext parent; //父级应用上下文
 
 	/** Environment used by this context. */
 	@Nullable
-	private ConfigurableEnvironment environment;
+	private ConfigurableEnvironment environment; //默认为StandardEnvironment
 
 	/** BeanFactoryPostProcessors to apply on refresh. */
 	private final List<BeanFactoryPostProcessor> beanFactoryPostProcessors = new ArrayList<>();
@@ -469,6 +469,7 @@ public abstract class AbstractApplicationContext extends DefaultResourceLoader
 	 * this (child) application context environment if the parent is non-{@code null} and
 	 * its environment is an instance of {@link ConfigurableEnvironment}.
 	 * @see ConfigurableEnvironment#merge(ConfigurableEnvironment)
+	 * 给这个应用上下文设置父级应用上下文
 	 */
 	@Override
 	public void setParent(@Nullable ApplicationContext parent) {

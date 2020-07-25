@@ -37,15 +37,19 @@ import org.springframework.lang.Nullable;
 
 /**
  * Miscellaneous {@link String} utility methods.
+ * string其他实用的方法
  *
  * <p>Mainly for internal use within the framework; consider
  * <a href="https://commons.apache.org/proper/commons-lang/">Apache's Commons Lang</a>
  * for a more comprehensive suite of {@code String} utilities.
+ * 其他更多用法可以使用apache的commons-lang
  *
  * <p>This class delivers some simple functionality that should really be
  * provided by the core Java {@link String} and {@link StringBuilder}
  * classes. It also provides easy-to-use methods to convert between
  * delimited strings, such as CSV strings, and collections and arrays.
+ * 
+ * 提供一些易于使用的方法来转换分隔字符串，例如CSV字符串，集合，数组
  *
  * @author Rod Johnson
  * @author Juergen Hoeller
@@ -56,6 +60,8 @@ import org.springframework.lang.Nullable;
  * @author Sam Brannen
  * @author Brian Clozel
  * @since 16 April 2001
+ * 
+ * 这里，空格不算空
  */
 public abstract class StringUtils {
 
@@ -89,6 +95,9 @@ public abstract class StringUtils {
 	 * @since 3.2.1
 	 * @see #hasLength(String)
 	 * @see #hasText(String)
+	 * 
+	 * 判断是否为空，
+	 * 竟然空格不算空
 	 */
 	public static boolean isEmpty(@Nullable Object str) {
 		return (str == null || "".equals(str));
@@ -109,6 +118,8 @@ public abstract class StringUtils {
 	 * @return {@code true} if the {@code CharSequence} is not {@code null} and has length
 	 * @see #hasLength(String)
 	 * @see #hasText(CharSequence)
+	 * 
+	 * 是否有字符串长度。空格也有长度
 	 */
 	public static boolean hasLength(@Nullable CharSequence str) {
 		return (str != null && str.length() > 0);
@@ -729,6 +740,9 @@ public abstract class StringUtils {
 	 * @throws IllegalArgumentException when the given source contains invalid encoded sequences
 	 * @since 5.0
 	 * @see java.net.URLDecoder#decode(String, String)
+	 * 
+	 * %<i>xy</i>解释为十六进制
+	 * 其余跟URLDecoder.decode(String, String)一样
 	 */
 	public static String uriDecode(String source, Charset charset) {
 		int length = source.length();
@@ -1257,6 +1271,8 @@ public abstract class StringUtils {
 	 * @param prefix the {@code String} to start each element with
 	 * @param suffix the {@code String} to end each element with
 	 * @return the delimited {@code String}
+	 * 
+	 * 用符号delim对集合coll进行分隔，每分隔出来的字符串，都在首尾拼上prefix， 和suffix
 	 */
 	public static String collectionToDelimitedString(
 			@Nullable Collection<?> coll, String delim, String prefix, String suffix) {
@@ -1282,6 +1298,8 @@ public abstract class StringUtils {
 	 * @param coll the {@code Collection} to convert (potentially {@code null} or empty)
 	 * @param delim the delimiter to use (typically a ",")
 	 * @return the delimited {@code String}
+	 * 
+	 * 用指定符号进行分隔
 	 */
 	public static String collectionToDelimitedString(@Nullable Collection<?> coll, String delim) {
 		return collectionToDelimitedString(coll, delim, "", "");
@@ -1292,6 +1310,8 @@ public abstract class StringUtils {
 	 * <p>Useful for {@code toString()} implementations.
 	 * @param coll the {@code Collection} to convert (potentially {@code null} or empty)
 	 * @return the delimited {@code String}
+	 * 
+	 * 默认用逗号,进行分隔
 	 */
 	public static String collectionToCommaDelimitedString(@Nullable Collection<?> coll) {
 		return collectionToDelimitedString(coll, ",");
@@ -1303,6 +1323,8 @@ public abstract class StringUtils {
 	 * @param arr the array to display (potentially {@code null} or empty)
 	 * @param delim the delimiter to use (typically a ",")
 	 * @return the delimited {@code String}
+	 * 
+	 * 
 	 */
 	public static String arrayToDelimitedString(@Nullable Object[] arr, String delim) {
 		if (ObjectUtils.isEmpty(arr)) {

@@ -47,7 +47,8 @@ ext {
 	tomcatVersion        = "9.0.29"
 	undertowVersion      = "2.0.28.Final"
 
-	gradleScriptDir = "${rootProject.projectDir}/gradle"
+	//自定义变量
+	gradleScriptDir = "${rootProject.projectDir}/gradle"  
 	withoutJclOverSlf4j = {
 		exclude group: "org.slf4j", module: "jcl-over-slf4j"
 	}
@@ -213,22 +214,22 @@ configure(subprojects - project(":spring-build-src")) { subproject ->
 		}
 	}
 
-	javadoc {
-		description = "Generates project-level javadoc for use in -javadoc jar"
-
-		options.encoding = "UTF-8"
-		options.memberLevel = org.gradle.external.javadoc.JavadocMemberLevel.PROTECTED
-		options.author = true
-		options.header = project.name
-		options.use = true
-		options.links(project.ext.javadocLinks)
-		options.addStringOption("Xdoclint:none", "-quiet")
-
-		// Suppress warnings due to cross-module @see and @link references.
-		// Note that global 'api' task does display all warnings.
-		logging.captureStandardError LogLevel.INFO
-		logging.captureStandardOutput LogLevel.INFO  // suppress "## warnings" message
-	}
+//	javadoc {
+//		description = "Generates project-level javadoc for use in -javadoc jar"
+//
+//		options.encoding = "UTF-8"
+//		options.memberLevel = org.gradle.external.javadoc.JavadocMemberLevel.PROTECTED
+//		options.author = true
+//		options.header = project.name
+//		options.use = true
+//		options.links(project.ext.javadocLinks)
+//		options.addStringOption("Xdoclint:none", "-quiet")
+//
+//		// Suppress warnings due to cross-module @see and @link references.
+//		// Note that global 'api' task does display all warnings.
+//		logging.captureStandardError LogLevel.INFO
+//		logging.captureStandardOutput LogLevel.INFO  // suppress "## warnings" message
+//	}
 
 	task sourcesJar(type: Jar, dependsOn: classes) {
 		duplicatesStrategy = DuplicatesStrategy.EXCLUDE
@@ -237,14 +238,14 @@ configure(subprojects - project(":spring-build-src")) { subproject ->
 		// Don't include or exclude anything explicitly by default. See SPR-12085.
 	}
 
-	task javadocJar(type: Jar) {
-		classifier = "javadoc"
-		from javadoc
-	}
+//	task javadocJar(type: Jar) {
+//		classifier = "javadoc"
+//		from javadoc
+//	}
 
 	artifacts {
 		archives sourcesJar
-		archives javadocJar
+//		archives javadocJar
 	}
 }
 
@@ -254,7 +255,7 @@ configure(rootProject) {
 	apply plugin: "groovy"
 	apply from: "${gradleScriptDir}/jdiff.gradle"
 	apply from: "${gradleScriptDir}/docs.gradle"
-
+	
 	dependencyManagement {
 		imports {
 			mavenBom "io.projectreactor:reactor-bom:${reactorVersion}"
@@ -284,9 +285,9 @@ configure(rootProject) {
 	}
 
 	artifacts {
-		archives docsZip
-		archives schemaZip
-		archives distZip
+		//archives docsZip
+		//archives schemaZip
+		//archives distZip
 	}
 
 	wrapper {

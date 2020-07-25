@@ -29,13 +29,18 @@ import org.springframework.lang.Nullable;
 /**
  * Utility methods for resolving resource locations to files in the
  * file system. Mainly for internal use within the framework.
- *
+ * 这个工具方法是用来解析位于文件系统中的文件资源位置。主要用于框架的内部使用
+ * 
  * <p>Consider using Spring's Resource abstraction in the core package
  * for handling all kinds of file resources in a uniform manner.
  * {@link org.springframework.core.io.ResourceLoader}'s {@code getResource()}
  * method can resolve any location to a {@link org.springframework.core.io.Resource}
  * object, which in turn allows one to obtain a {@code java.io.File} in the
  * file system through its {@code getFile()} method.
+ * 
+ * 考虑使用core包中的spring的抽象接口Resource，用统一的方式处理各种各样的文件资源
+ * org.springframework.core.io.ResourceLoader的getResource()方法可以解决任何org.springframework.core.io.Resource对象上的位置问题
+ * 它允许通过它的getFile()方法来获取文件系统的java.io.File
  *
  * @author Juergen Hoeller
  * @since 1.1.5

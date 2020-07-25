@@ -26,7 +26,7 @@ import org.springframework.util.StringUtils;
 /**
  * A data size, such as '12MB'.
  *
- * <p>This class models a size in terms of bytes and is immutable and thread-safe.
+ * <p>This class models a size in terms of bytes and is immutable不可变 and thread-safe.
  *
  * @author Stephane Nicoll
  * @since 5.1
@@ -179,6 +179,7 @@ public final class DataSize implements Comparable<DataSize> {
 	/**
 	 * Checks if this size is negative, excluding zero.
 	 * @return true if this size has a size less than zero bytes
+	 * 负数
 	 */
 	public boolean isNegative() {
 		return this.bytes < 0;

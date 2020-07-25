@@ -27,6 +27,11 @@ import java.util.UUID;
  * time as {@link org.springframework.util.JdkIdGenerator JdkIdGenerator} does.
  * This provides a better balance between securely random ids and performance.
  *
+ * 一个IdGenerator使用SecureRandom作为初始化种子，然后再使用Random
+ * 而不是像org.springframework.util.JdkIdGenerator一样，每次都调用UUID.randomUUID()
+ * 这在安全的随机id和性能之间提供更好的平衡
+ * 
+ * 
  * @author Rossen Stoyanchev
  * @author Rob Winch
  * @since 4.0
@@ -51,7 +56,7 @@ public class AlternativeJdkIdGenerator implements IdGenerator {
 
 		long mostSigBits = 0;
 		for (int i = 0; i < 8; i++) {
-			mostSigBits = (mostSigBits << 8) | (randomBytes[i] & 0xff);
+			mostSigBits = (mostSigBits << 8) | (randomBytes[i] & 0xff); //0xff为十六进制，转成十进制为255。15*16^1+15*16^0
 		}
 
 		long leastSigBits = 0;
@@ -60,6 +65,10 @@ public class AlternativeJdkIdGenerator implements IdGenerator {
 		}
 
 		return new UUID(mostSigBits, leastSigBits);
+	}
+	
+	public static void main(String[] args) {
+		System.out.println(1<<8);
 	}
 
 }

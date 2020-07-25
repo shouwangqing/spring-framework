@@ -21,13 +21,16 @@ import java.util.Map;
 
 /**
  * Strategy interface for {@code String}-based path matching.
+ * 基于字符串的路径匹配策略接口
  *
  * <p>Used by {@link org.springframework.core.io.support.PathMatchingResourcePatternResolver},
  * {@link org.springframework.web.servlet.handler.AbstractUrlHandlerMapping},
  * and {@link org.springframework.web.servlet.mvc.WebContentInterceptor}.
+ * 被PathMatchingResourcePatternResolver，AbstractUrlHandlerMapping，WebContentInterceptor所用
  *
  * <p>The default implementation is {@link AntPathMatcher}, supporting the
  * Ant-style pattern syntax.
+ * 默认的实现是AntPathMatcher，支持Ant-style模式语法
  *
  * @author Juergen Hoeller
  * @since 1.2
@@ -43,6 +46,12 @@ public interface PathMatcher {
 	 * on the static path Strings will lead to the same result.
 	 * @param path the path String to check
 	 * @return {@code true} if the given {@code path} represents a pattern
+	 * 
+	 * 给定的路径能代表一种模式，且可以由这个接口的实现所匹配？
+	 * 如果返回false，那么不必使用这个match方法，因为在静态路径上直接进行相等比较，可能会导致相同的结果
+	 * 
+	 * 包含*和？以及{}的字符串，都会返回true，即为模式
+	 * 
 	 */
 	boolean isPattern(String path);
 
